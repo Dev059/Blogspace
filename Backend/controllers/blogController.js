@@ -137,7 +137,7 @@ export const getAllBlogs = catchAsyncErrors(async (req, res, next) => {
   const allBlogs = await Blog.find({ published: true });
   res.status(200).json({
     success: true,
-    allBlogs,
+    allBlogs
   });
 });
 
