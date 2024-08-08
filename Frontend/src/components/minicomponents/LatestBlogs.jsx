@@ -1,39 +1,34 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { BeatLoader } from "react-spinners";
+import React from "react";
+import { Link } from "react-router-dom";
 
-const PopularAuthors = () => {
-  const [authors, setAuthors] = useState([]);
-  useEffect(() => {
-    const fetchAuthors = async () => {
-      const { data } = await axios.get(
-        "http://localhost:4000/api/v1/user/authors",
-        { withCredentials: true }
-      );
-      setAuthors(data.authors);
-    };
-    fetchAuthors();
-  }, []);
+const LatestBlogs = ({ heading, newClass, blogs }) => {
   return (
-    <section className="popularAuthors">
-      <h3>Popular Authors</h3>
+    <section
+      className={
+        newClass && newClass.length > 0 ? "dashboard-blogs blogs" : "blogs"
+      }
+    >
+      <h3>{heading}</h3>
       <div className="container">
-        {authors && authors.length > 0 ? (
-          authors.slice(0, 4).map((element) => {
+        {blogs &&
+          blogs.map((element) => {
             return (
-              <div className="card" key={element._id}>
-                <img src={element.avatar.url} alt="author" />
-                <p>{element.name}</p>
-                <p>{element.role}</p>
-              </div>
+              <Link to={`/blog/${element._id}`} className="card" key={element._id}>
+                <img src={element.mainImage.url} alt="blog" />
+                <span className="category">{element.category}</span>
+                <h4>{element.title}</h4>
+                <div className="writer_section">
+                  <div className="author">
+                    <img src={element.authorAvatar} alt="author_avatar" />
+                    <p>{element.authorName}</p>
+                  </div>
+                </div>
+              </Link>
             );
-          })
-        ) : (
-          <BeatLoader color="gray" size={30} />
-        )}
+          })}
       </div>
     </section>
   );
 };
 
-export default PopularAuthors;
+export default LatestBlogs;

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../src/components/pages/Home";
@@ -49,7 +49,7 @@ const App = () => {
     };
     fetchUser();
     fetchBlogs();
-  }, [isAuthenticated, user]);
+  }, [isAuthenticated, user,setBlogs,setUser,setIsAuthenticated]);
   return (
     <>
       <BrowserRouter>

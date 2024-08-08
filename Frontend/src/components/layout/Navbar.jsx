@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -34,6 +34,10 @@ const Navbar = () => {
     }
   };
 
+  const  handleZeta=()=>{
+    navigateTo("/")
+  }
+
   return (
     <section
       className={
@@ -45,7 +49,7 @@ const Navbar = () => {
       }
     >
       <nav>
-        <div className="logo">
+        <div className="logo" onClick={handleZeta}>
           Zeta<span>Blog</span>
         </div>
         <div className={show ? "links show" : "links"}>

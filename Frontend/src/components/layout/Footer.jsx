@@ -6,7 +6,7 @@ import { Context } from "../../main";
 
 const Footer = () => {
   const isDashboard = useLocation("http://localhost:5173/dashboard");
-  const { mode, setMode } = useContext(Context);
+  const { mode, setMode ,user} = useContext(Context);
 
   return (
     <footer
@@ -22,15 +22,13 @@ const Footer = () => {
         <div className="about">
           <h3>About</h3>
           <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-            Consectetur possimus sed praesentium! Et sunt, distinctio veniam
-            ullam, nesciunt ex laudantium quidem error sint, eum explicabo.
+          We believe great software should work with minimum set up, emphasizing accessibility, performance, security, and ease of use. The basic ZetaBLOG software is simple and predictable, offering powerful features for growth and success.
           </p>
           <p>
-            <span>Email:</span>zk@gmail.com
+            <span>Email:</span>{user.email}
           </p>
           <p>
-            <span>Phone:</span>0123987123
+            <span>Phone:</span>{user.phone}
           </p>
         </div>
         <div className="quick_links">

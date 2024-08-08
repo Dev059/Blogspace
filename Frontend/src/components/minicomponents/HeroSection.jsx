@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Context } from "../../main";
 import { BeatLoader } from "react-spinners";
 import { Link } from "react-router-dom";
