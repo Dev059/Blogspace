@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import LatestBlogs from "../miniComponents/LatestBlogs";
+import  { useContext } from "react";
+// import LatestBlogs from "../miniComponents/LatestBlogs";
 import HeroSection from "../miniComponents/HeroSection";
 import TrendingBlogs from "../miniComponents/TrendingBlogs";
 import PopularAuthors from "../miniComponents/PopularAuthors";
@@ -13,7 +13,7 @@ const Home = () => {
       <article className={mode === "dark" ? "dark-bg" : "light-bg"}>
         <HeroSection />
         <TrendingBlogs />
-        <LatestBlogs heading={"Latest Blogs"} blogs={filteredBlogs} />
+        {/* <LatestBlogs heading={"Latest Blogs"} blogs={filteredBlogs} /> */}
         <PopularAuthors />
       </article>
     </>
