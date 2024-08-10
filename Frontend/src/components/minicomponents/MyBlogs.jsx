@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import LatestBlogs from "./LatestBlogs";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
