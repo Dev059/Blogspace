@@ -1,0 +1,1 @@
+export const base=`https://blogspace-qfut.onrender.com`
