@@ -1,9 +1,9 @@
-import React, { useContext, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Context } from "../../main";
 import axios from "axios";
 import toast from "react-hot-toast";
-
+import { base } from "../../BackendUrl";
 const Register = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -41,7 +41,7 @@ const Register = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/user/register",
+        `${base}/api/v1/user/register`,
         formData,
         {
           withCredentials: true,

@@ -1,15 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../../main";
 import axios from "axios";
-import { BeatLoader, BounceLoader } from "react-spinners";
-
+import { BeatLoader } from "react-spinners";
+import { base } from "../../BackendUrl";
 const AllAuthors = () => {
   const [authors, setAuthors] = useState([]);
   const { mode } = useContext(Context);
   useEffect(() => {
     const fetchAuthors = async () => {
       const { data } = await axios.get(
-        "http://localhost:4000/api/v1/user/authors",
+        `${base}/api/v1/user/authors`,
         { withCredentials: true }
       );
       setAuthors(data.authors);

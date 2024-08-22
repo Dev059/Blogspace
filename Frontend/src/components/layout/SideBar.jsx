@@ -7,6 +7,7 @@ import { CiLight } from "react-icons/ci";
 import { MdDarkMode } from "react-icons/md";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { base } from "../../BackendUrl";
 
 const SideBar = ({ setComponent }) => {
   const [show, setShow] = useState(false);
@@ -17,7 +18,7 @@ const SideBar = ({ setComponent }) => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        "http://localhost:4000/api/v1/user/logout",
+        `${base}/api/v1/user/logout`,
         { withCredentials: true }
       );
       setIsAuthenticated(false);

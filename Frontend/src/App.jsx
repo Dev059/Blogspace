@@ -15,7 +15,7 @@ import AllAuthors from "./components/pages/AllAuthors";
 import { Context } from "./main";
 import axios from "axios";
 import UpdateBlog from "./components/pages/UpdateBlog";
-
+import { base } from "./BackendUrl";
 const App = () => {
   const { setUser, isAuthenticated, setIsAuthenticated, user, setBlogs } =
     useContext(Context);
@@ -23,7 +23,7 @@ const App = () => {
     const fetchUser = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:4000/api/v1/user/myprofile",
+          `${base}/api/v1/user/myprofile`,
           {
             withCredentials: true,
           }
@@ -39,7 +39,7 @@ const App = () => {
     const fetchBlogs = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:4000/api/v1/blog/all",
+          `${base}/api/v1/blog/all`,
           { withCredentials: true }
         );
         setBlogs(data.allBlogs);

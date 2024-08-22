@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
-
+import { base } from "../../BackendUrl";
 const CreateBlog = () => {
   const [category, setCategory] = useState("");
   const [mainImage, setMainImage] = useState("");
@@ -97,7 +97,7 @@ const CreateBlog = () => {
 
     try {
       const { data } = await axios.post(
-        "http://localhost:4000/api/v1/blog/post",
+        `${base}/api/v1/blog/post`,
         formData,
         {
           withCredentials: true,

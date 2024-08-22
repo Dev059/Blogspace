@@ -7,14 +7,14 @@ import { MdDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
 import axios from "axios";
 import toast from "react-hot-toast";
-
+import { base } from "../../BackendUrl";
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const handleNavbar = () => {
     setShow(!show);
   };
   
-  const isDashboard = useLocation("http://localhost:5173/dashboard");
+  const isDashboard = useLocation(`${base}/dashboard`);
   
   const { mode, setMode, isAuthenticated, user, setIsAuthenticated } = useContext(Context);
   
@@ -23,7 +23,7 @@ const Navbar = () => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        "http://localhost:4000/api/v1/user/logout",
+        `${base}/api/v1/user/logout`,
         { withCredentials: true }
       );
       setIsAuthenticated(false);

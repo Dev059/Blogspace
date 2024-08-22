@@ -3,9 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 import { AiFillInstagram, AiFillYoutube, AiFillLinkedin } from "react-icons/ai";
 import { FaGitSquare } from "react-icons/fa";
 import { Context } from "../../main";
+import { base } from "../../BackendUrl";
 
 const Footer = () => {
-  const isDashboard = useLocation("http://localhost:5173/dashboard");
+  const isDashboard = useLocation(`${base}/dashboard`);
   const { mode,user} = useContext(Context);
 
   return (
@@ -71,7 +72,7 @@ const Footer = () => {
           <Link to={"/"} target="_blank">
             <FaGitSquare />
           </Link>
-          <Link to={"https://www.youtube.com/@CodeWithZeeshu"} target="_blank">
+          <Link to={"https://www.youtube.com/@deveshsingh9272"} target="_blank">
             <AiFillYoutube />
           </Link>
           <Link to={"/"} target="_blank">
