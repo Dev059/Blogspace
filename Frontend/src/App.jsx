@@ -22,8 +22,7 @@ const App = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const { data } = await axios.get(
-          `${base}/api/v1/user/myprofile`,
+        const { data } = await axios.get(`${base}/api/v1/user/myprofile`,
           {
             withCredentials: true,
           }

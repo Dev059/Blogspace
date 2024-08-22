@@ -7,7 +7,10 @@ import { Context } from "../../main";
 
 const Home = () => {
   const { mode, blogs } = useContext(Context);
-  const filteredBlogs = blogs.slice(0, 6);
+  let filteredBlogs;
+  if(blogs){
+    filteredBlogs = blogs.slice(0,6);
+  }
   return (
     <>
       <article className={mode === "dark" ? "dark-bg" : "light-bg"}>

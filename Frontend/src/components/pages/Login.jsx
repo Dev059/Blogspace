@@ -67,7 +67,7 @@ const Login = () => {
             />
           </div>
           <p>
-            Don't have any Account? <Link to={"/register"}>Register Now</Link>
+            Dont have any Account? <Link to={"/register"}>Register Now</Link>
           </p>
 
           <button className="submit-btn" type="submit">

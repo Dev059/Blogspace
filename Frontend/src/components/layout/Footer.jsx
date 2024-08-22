@@ -26,10 +26,12 @@ const Footer = () => {
           We believe great software should work with minimum set up, emphasizing accessibility, performance, security, and ease of use. The basic ZetaBLOG software is simple and predictable, offering powerful features for growth and success.
           </p>
           <p>
-            <span>Email:</span>{user.email}
+          <span>Email:</span> {user?.email || "No email provided"}
+
           </p>
+          
           <p>
-            <span>Phone:</span>{user.phone}
+          <span>Phone:</span> {user?.phone || "No phone-number provided"}
           </p>
         </div>
         <div className="quick_links">

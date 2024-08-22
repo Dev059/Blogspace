@@ -22,7 +22,7 @@ const SingleBlog = () => {
       }
     };
     getSingleBlog();
-  }, []);
+  }, [id]);
   if (!isAuthenticated) {
     return <Navigate to={"/"} />;
   }
