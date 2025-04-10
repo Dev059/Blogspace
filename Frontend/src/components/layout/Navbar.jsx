@@ -7,14 +7,14 @@ import { MdDarkMode } from "react-icons/md";
 import { CiLight } from "react-icons/ci";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { base } from "../../BackendUrl";
+
 const Navbar = () => {
   const [show, setShow] = useState(false);
   const handleNavbar = () => {
     setShow(!show);
   };
   
-  const isDashboard = useLocation(`${base}/dashboard`);
+  const isDashboard = useLocation("http://localhost:5173/dashboard");
   
   const { mode, setMode, isAuthenticated, user, setIsAuthenticated } = useContext(Context);
   
@@ -23,7 +23,7 @@ const Navbar = () => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        `${base}/api/v1/user/logout`,
+        "http://localhost:4000/api/v1/user/logout",
         { withCredentials: true }
       );
       setIsAuthenticated(false);
@@ -33,10 +33,6 @@ const Navbar = () => {
       toast.error(error.response.data.message);
     }
   };
-
-  const  handleZeta=()=>{
-    navigateTo("/")
-  }
 
   return (
     <section
@@ -49,7 +45,7 @@ const Navbar = () => {
       }
     >
       <nav>
-        <div className="logo" onClick={handleZeta}>
+        <div className="logo">
           Zeta<span>Blog</span>
         </div>
         <div className={show ? "links show" : "links"}>

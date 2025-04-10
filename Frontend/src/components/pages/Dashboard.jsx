@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import SideBar from "../layout/SideBar";
 import MyBlogs from "../miniComponents/MyBlogs";
 import MyProfile from "../miniComponents/MyProfile";

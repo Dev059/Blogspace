@@ -2,17 +2,16 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from "../../main";
 import { Navigate, useParams } from "react-router-dom";
 import axios from "axios";
-import { base } from "../../BackendUrl";
 
 const SingleBlog = () => {
-  const { mode,isAuthenticated } = useContext(Context);
+  const { mode, user, isAuthenticated } = useContext(Context);
   const { id } = useParams();
   const [blog, setBlog] = useState({});
   useEffect(() => {
     const getSingleBlog = async () => {
       try {
         const { data } = await axios.get(
-          `${base}/api/v1/blog/singleblog/${id}`,
+          `http://localhost:4000/api/v1/blog/singleblog/${id}`,
           { withCredentials: true }
         );
         setBlog(data.blog);
@@ -22,7 +21,7 @@ const SingleBlog = () => {
       }
     };
     getSingleBlog();
-  }, [id]);
+  }, []);
   if (!isAuthenticated) {
     return <Navigate to={"/"} />;
   }

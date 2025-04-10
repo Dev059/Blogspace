@@ -1,5 +1,5 @@
-import  { useContext } from "react";
-import LatestBlogs from '../miniComponents/LatestBlogs'
+import React, { useContext, useState } from "react";
+import LatestBlogs from "../miniComponents/LatestBlogs";
 import HeroSection from "../miniComponents/HeroSection";
 import TrendingBlogs from "../miniComponents/TrendingBlogs";
 import PopularAuthors from "../miniComponents/PopularAuthors";
@@ -7,10 +7,7 @@ import { Context } from "../../main";
 
 const Home = () => {
   const { mode, blogs } = useContext(Context);
-  let filteredBlogs;
-  if(blogs){
-    filteredBlogs = blogs.slice(0,6);
-  }
+  const filteredBlogs = blogs.slice(0, 6);
   return (
     <>
       <article className={mode === "dark" ? "dark-bg" : "light-bg"}>

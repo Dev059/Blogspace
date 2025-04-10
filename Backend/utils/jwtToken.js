@@ -1,3 +1,6 @@
+import dotenv from "dotenv"
+dotenv.config()
+
 export const sendToken = (user, statusCode, message, res) => {
     const token = user.getJWTToken();
     const options = {

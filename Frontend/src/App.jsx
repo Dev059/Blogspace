@@ -15,14 +15,15 @@ import AllAuthors from "./components/pages/AllAuthors";
 import { Context } from "./main";
 import axios from "axios";
 import UpdateBlog from "./components/pages/UpdateBlog";
-import { base } from "./BackendUrl";
+
 const App = () => {
-  const { setUser, isAuthenticated, setIsAuthenticated, user, setBlogs } =
-    useContext(Context);
+  const { setUser, setIsAuthenticated, setBlogs } = useContext(Context);
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const { data } = await axios.get(`${base}/api/v1/user/myprofile`,
+        const { data } = await axios.get(
+          "http://localhost:4000/api/v1/user/myprofile",
           {
             withCredentials: true,
           }
@@ -35,10 +36,11 @@ const App = () => {
         setUser({});
       }
     };
+
     const fetchBlogs = async () => {
       try {
         const { data } = await axios.get(
-          `${base}/api/v1/blog/all`,
+          "http://localhost:4000/api/v1/blog/all",
           { withCredentials: true }
         );
         setBlogs(data.allBlogs);
@@ -46,9 +48,11 @@ const App = () => {
         setBlogs([]);
       }
     };
+
     fetchUser();
     fetchBlogs();
-  }, [isAuthenticated, user,setBlogs,setUser,setIsAuthenticated]);
+  }, [setUser, setIsAuthenticated, setBlogs])
+
   return (
     <>
       <BrowserRouter>

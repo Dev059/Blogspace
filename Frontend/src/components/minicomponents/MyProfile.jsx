@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { Context } from "../../main";
 
 const MyProfile = () => {
@@ -6,7 +6,7 @@ const MyProfile = () => {
   return (
     <section className="profile">
       <div className="avatar">
-        <img src={user && user.avatar.url} alt="avatar" />
+        <img src="/pic.jpg" alt="avatar" />
       </div>
       <div className="user-detail">
         <p>

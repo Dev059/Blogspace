@@ -9,33 +9,30 @@ import blogRouter from "./routes/blogRouter.js";
 import fileUpload from "express-fileupload";
 
 const app = express();
-dotenv.config({ path: "./config/config.env" });
+dotenv.config();
 
-app.use(
-  cors({
-    origin: [process.env.FRONTEND],
-    methods: ["GET", "PUT", "DELETE", "POST"],
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: "https://your-frontend.vercel.app",
+  credentials: true,
+}));
 
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(
-  fileUpload({
-    useTempFiles: true,
-    tempFileDir: "/tmp/",
-  })
-);
+app.use(fileUpload({
+  useTempFiles: true,
+  tempFileDir: "/tmp/",
+}));
 
+// ✅ Connect DB
+dbConnection();
 
+// ✅ Routes
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/blog", blogRouter);
 
-dbConnection();
-
+// ✅ Error handler
 app.use(errorMiddleware);
 
 export default app;

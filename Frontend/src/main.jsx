@@ -1,8 +1,7 @@
-import React, { createContext, useState } from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
+import React, { createContext, useState } from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
 
-// Create the context
 export const Context = createContext({
   isAuthenticated: false,
 });
@@ -16,14 +15,14 @@ const AppWrapper = () => {
   return (
     <Context.Provider
       value={{
-        isAuthenticated,
-        setIsAuthenticated,
         user,
         setUser,
         blogs,
         setBlogs,
         mode,
         setMode,
+        isAuthenticated,
+        setIsAuthenticated,
       }}
     >
       <App />
@@ -31,21 +30,8 @@ const AppWrapper = () => {
   );
 };
 
-// Ensure `createRoot` is only called once
-const container = document.getElementById('root');
-
-if (!container._reactRootContainer) {
-  const root = ReactDOM.createRoot(container);
-  root.render(
-    <React.StrictMode>
-      <AppWrapper />
-    </React.StrictMode>
-  );
-} else {
-  // If the root already exists, just update it
-  container._reactRootContainer.render(
-    <React.StrictMode>
-      <AppWrapper />
-    </React.StrictMode>
-  );
-}
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <AppWrapper />
+  </React.StrictMode>
+);

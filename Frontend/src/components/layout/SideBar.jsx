@@ -1,13 +1,13 @@
 import { useContext, useState } from "react";
+import PropTypes from "prop-types";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useNavigate } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa6";
-import { Context } from "../../main";
 import { CiLight } from "react-icons/ci";
 import { MdDarkMode } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
+import { Context } from "../../main";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { base } from "../../BackendUrl";
 
 const SideBar = ({ setComponent }) => {
   const [show, setShow] = useState(false);
@@ -18,53 +18,54 @@ const SideBar = ({ setComponent }) => {
     e.preventDefault();
     try {
       const { data } = await axios.get(
-        `${base}/api/v1/user/logout`,
+        "http://localhost:4000/api/v1/user/logout",
         { withCredentials: true }
       );
       setIsAuthenticated(false);
       toast.success(data.message);
       navigateTo("/");
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error?.response?.data?.message || "Logout failed");
     }
   };
 
   const gotoHome = () => {
     navigateTo("/");
   };
+
   const handleComponent = (value) => {
     setComponent(value);
   };
+
   return (
     <>
       <div className="icon-wrapper" onClick={() => setShow(!show)}>
         <RxHamburgerMenu />
       </div>
+
       <section className={show ? "show-sidebar sidebar" : "sidebar"}>
         <div className="icon-wrapper-arrow" onClick={() => setShow(!show)}>
           <FaArrowLeft />
         </div>
+
         <div className="user-detail">
-          <img src={user && user.avatar.url} alt="avatar" />
-          <p>{user.name}</p>
+          <img
+            src={user?.avatar?.url || "/default-avatar.png"}
+            alt="avatar"
+          />
+          <p>{user?.name || "User"}</p>
         </div>
+
         <ul>
           <button onClick={() => handleComponent("My Blogs")}>MY BLOGS</button>
-          <button onClick={() => handleComponent("Create Blog")}>
-            CREATE BLOG
-          </button>
-          <button onClick={() => handleComponent("Analytics")}>
-            CHART
-          </button>
-          <button onClick={() => handleComponent("My Profile")}>
-            MY PROFILE
-          </button>
+          <button onClick={() => handleComponent("Create Blog")}>CREATE BLOG</button>
+          <button onClick={() => handleComponent("Analytics")}>CHART</button>
+          <button onClick={() => handleComponent("My Profile")}>MY PROFILE</button>
           <button onClick={gotoHome}>HOME</button>
           <button onClick={handleLogout}>LOGOUT</button>
+
           <button
-            onClick={() =>
-              mode === "light" ? setMode("dark") : setMode("light")
-            }
+            onClick={() => setMode(mode === "light" ? "dark" : "light")}
             className={
               mode === "light" ? "mode-btn light-mode" : "mode-btn dark-mode"
             }
@@ -79,6 +80,10 @@ const SideBar = ({ setComponent }) => {
       </section>
     </>
   );
+};
+
+SideBar.propTypes = {
+  setComponent: PropTypes.func.isRequired,
 };
 
 export default SideBar;

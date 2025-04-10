@@ -3,11 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 import { AiFillInstagram, AiFillYoutube, AiFillLinkedin } from "react-icons/ai";
 import { FaGitSquare } from "react-icons/fa";
 import { Context } from "../../main";
-import { base } from "../../BackendUrl";
 
 const Footer = () => {
-  const isDashboard = useLocation(`${base}/dashboard`);
-  const { mode,user} = useContext(Context);
+  const isDashboard = useLocation("http://localhost:5173/dashboard");
+  const { mode, setMode } = useContext(Context);
 
   return (
     <footer
@@ -23,15 +22,15 @@ const Footer = () => {
         <div className="about">
           <h3>About</h3>
           <p>
-          We believe great software should work with minimum set up, emphasizing accessibility, performance, security, and ease of use. The basic ZetaBLOG software is simple and predictable, offering powerful features for growth and success.
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+            Consectetur possimus sed praesentium! Et sunt, distinctio veniam
+            ullam, nesciunt ex laudantium quidem error sint, eum explicabo.
           </p>
           <p>
-          <span>Email:</span> {user?.email || "No email provided"}
-
+            <span>Email:</span>zk@gmail.com
           </p>
-          
           <p>
-          <span>Phone:</span> {user?.phone || "No phone-number provided"}
+            <span>Phone:</span>0123987123
           </p>
         </div>
         <div className="quick_links">
@@ -74,7 +73,7 @@ const Footer = () => {
           <Link to={"/"} target="_blank">
             <FaGitSquare />
           </Link>
-          <Link to={"https://www.youtube.com/@deveshsingh9272"} target="_blank">
+          <Link to={"https://www.youtube.com/@CodeWithZeeshu"} target="_blank">
             <AiFillYoutube />
           </Link>
           <Link to={"/"} target="_blank">
