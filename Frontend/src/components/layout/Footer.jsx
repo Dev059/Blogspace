@@ -5,18 +5,20 @@ import { FaGitSquare } from "react-icons/fa";
 import { Context } from "../../main";
 
 const Footer = () => {
-  const isDashboard = useLocation("http://localhost:5173/dashboard");
+  const location = useLocation();
+  const isDashboard = location.pathname === "/dashboard";
   const { mode, setMode } = useContext(Context);
 
   return (
     <footer
-      className={
-        isDashboard.pathname === "/dashboard"
-          ? "hideFooter"
-          : mode === "light"
-          ? "light-footer"
-          : "dark-footer"
-      }
+    className={
+      isDashboard
+        ? "hideFooter"
+        : mode === "light"
+        ? "light-footer"
+        : "dark-footer"
+    }
+    
     >
       <div className="container">
         <div className="about">

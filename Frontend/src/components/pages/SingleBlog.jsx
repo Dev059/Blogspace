@@ -2,16 +2,17 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from "../../main";
 import { Navigate, useParams } from "react-router-dom";
 import axios from "axios";
+import base from "../../BackendURL"
 
 const SingleBlog = () => {
-  const { mode, user, isAuthenticated } = useContext(Context);
+  const { mode, isAuthenticated } = useContext(Context);
   const { id } = useParams();
   const [blog, setBlog] = useState({});
   useEffect(() => {
     const getSingleBlog = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:4000/api/v1/blog/singleblog/${id}`,
+          `${base}/api/v1/blog/singleblog/${id}`,
           { withCredentials: true }
         );
         setBlog(data.blog);
@@ -21,7 +22,7 @@ const SingleBlog = () => {
       }
     };
     getSingleBlog();
-  }, []);
+  }, [id]);
   if (!isAuthenticated) {
     return <Navigate to={"/"} />;
   }
@@ -59,7 +60,7 @@ const SingleBlog = () => {
             {blog && blog.paraTwoImage && (
               <img src={blog.paraTwoImage.url} alt="paraOneImg" />
             )}
-            <p>{blog.paraThreeDescription}</p>
+            <p>{blog.paraTwoDescription}</p>
           </div>
           <div className="sub-para">
             <h3>{blog.paraThreeTitle}</h3>
