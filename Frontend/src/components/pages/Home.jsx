@@ -1,6 +1,6 @@
 import { useContext} from "react";
 
-import HeroSection from "../miniComponents/HeroSection";
+import HeroSection from "../miniComponents/HeroSection.jsx";
 import TrendingBlogs from "../miniComponents/TrendingBlogs";
 import PopularAuthors from "../miniComponents/PopularAuthors";
 import { Context } from "../../main";
