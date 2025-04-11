@@ -1,5 +1,6 @@
 import { useContext} from "react";
-import LatestBlogs from "../miniComponents/LatestBlogs";
+import LatestBlogs from "../../components/miniComponents/LatestBlogs";
+
 import HeroSection from "../miniComponents/HeroSection";
 import TrendingBlogs from "../miniComponents/TrendingBlogs";
 import PopularAuthors from "../miniComponents/PopularAuthors";
