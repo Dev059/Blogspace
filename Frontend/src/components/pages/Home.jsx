@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import { useContext} from "react";
 import LatestBlogs from "../miniComponents/LatestBlogs";
 import HeroSection from "../miniComponents/HeroSection";
 import TrendingBlogs from "../miniComponents/TrendingBlogs";
