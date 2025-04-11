@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import LatestBlogs from "../miniComponents/LatestBlogs";
+
 import { Context } from "../../main";
+import LatestBlogs from "../miniComponents/LatestBlogs";
 
 const Blogs = () => {
   const { mode, blogs } = useContext(Context);
