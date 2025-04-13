@@ -12,7 +12,7 @@ const app = express();
 dotenv.config();
 
 app.use(cors({
-  origin: "https://your-frontend.vercel.app",
+  origin: "https://blogspace-xi.vercel.app",
   credentials: true,
 }));
 
