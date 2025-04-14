@@ -8,7 +8,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("");
-  const { mode, isAuthenticated, setIsAuthenticated } = useContext(Context);
+  const { mode, isAuthenticated, setIsAuthenticated, setUser } = useContext(Context);
   const navigateTo = useNavigate();
 
   const handleLogin = async (e) => {
@@ -29,6 +29,7 @@ const Login = () => {
         setRole("");
 
         setIsAuthenticated(true);
+        setUser(res.data.user);
         navigateTo("/");
       })
       .catch((error) => {

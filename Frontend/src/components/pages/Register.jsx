@@ -24,7 +24,7 @@ const Register = () => {
     };
   };
 
-  const { mode, isAuthenticated, setIsAuthenticated } = useContext(Context);
+  const { mode, isAuthenticated, setIsAuthenticated, setUser } = useContext(Context);
 
   const navigateTo = useNavigate();
 
@@ -60,6 +60,7 @@ const Register = () => {
       setAvatarPreview("");
       toast.success(data.message);
       setIsAuthenticated(true);
+      setUser(res.data.user);
       navigateTo("/");
     } catch (error) {
       toast.error(error.response.data.message);
