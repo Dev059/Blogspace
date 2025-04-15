@@ -60,7 +60,7 @@ const Register = () => {
       setAvatarPreview("");
       toast.success(data.message);
       setIsAuthenticated(true);
-      setUser(res.data.user);
+      setUser(data.user);
       navigateTo("/");
     } catch (error) {
       toast.error(error.response.data.message);
